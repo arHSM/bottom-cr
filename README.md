@@ -1,38 +1,82 @@
 # bottom-cr
 
-TODO: Write a description here
+A bottom spec implementation in Crystal
+
+The spec can be found at https://github.com/bottom-software-foundation/spec
 
 ## Installation
 
-1. Add the dependency to your `shard.yml`:
-
-   ```yaml
-   dependencies:
-     bottom-cr:
-       github: your-github-user/bottom-cr
-   ```
-
-2. Run `shards install`
+Just download [`bottom.cr`](src/bottom.cr) and add it to your project or w/e
 
 ## Usage
 
 ```crystal
-require "bottom-cr"
+require "path/to/bottom.cr"
+
+puts Bottom.encode("Hello")
+# Output: 💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈
+puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈")
+# Output: Hello
 ```
 
-TODO: Write usage instructions here
+## Documentation
 
-## Development
+### **def decode(string : String) : String#**
+> Validates and decodes the given *string*.
+> Raises an `ArgumentError` if *string* is not a valid bottom-encoded string or the
+> string is not valid a valid UTF8 string.
+>
+> Example:
+>
+> Valid:
+> ```
+> puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈")
+> # Output: Hello
+> ```
+>
+> Invalid:
+> ```
+> puts Bottom.decode("Hello")
+> # Output: ArgumentError
+> ```
+>
+> Returns `String`
 
-TODO: Write development instructions here
 
-## Contributing
+### **def encode(string : String) : String#**
+> Encodes *string* as per the bottom spec.
+> Raises an `ArgumentError` if the *string* is not a valid UTF8 string.
+> 
+> Example:
+> 
+> ```
+> puts Bottom.encode("Hello")
+> # Output: 💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈
+> ```
+> 
+> Returns `String`
 
-1. Fork it (<https://github.com/your-github-user/bottom-cr/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+### **def verify_bottom(string : String)#**
+> Validates the given `String` instance.
+> Raises an `ArgumentError` if *string* is not a valid bottom-encoded string or the
+> string is not valid a valid UTF8 string.
+> 
+> Example:
+> 
+> Valid:
+> ```
+> puts Bottom.verify_bottom("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈")
+> # Output: nil
+> ```
+> 
+> Invalid:
+> ```
+> puts Bottom.verify_bottom("Hello")
+> # Output: ArgumentError
+> ```
+> 
+> Returns `nil`
+
 
 ## Contributors
 
