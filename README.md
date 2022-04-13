@@ -21,7 +21,7 @@ puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈
 
 ## Documentation
 
-### **def decode(string : String) : String#**
+### **def decode(string : String) : String**
 > Validates and decodes the given *string*.
 > Raises an `ArgumentError` if *string* is not a valid bottom-encoded string or the
 > string is not valid a valid UTF8 string.
@@ -29,13 +29,13 @@ puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈
 > Example:
 >
 > Valid:
-> ```
+> ```crystal
 > puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈")
 > # Output: Hello
 > ```
 >
 > Invalid:
-> ```
+> ```crystal
 > puts Bottom.decode("Hello")
 > # Output: ArgumentError
 > ```
@@ -43,20 +43,20 @@ puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈
 > Returns `String`
 
 
-### **def encode(string : String) : String#**
+### **def encode(string : String) : String**
 > Encodes *string* as per the bottom spec.
 > Raises an `ArgumentError` if the *string* is not a valid UTF8 string.
 > 
 > Example:
 > 
-> ```
+> ```crystal
 > puts Bottom.encode("Hello")
 > # Output: 💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈
 > ```
 > 
 > Returns `String`
 
-### **def verify_bottom(string : String)#**
+### **def verify_bottom(string : String)**
 > Validates the given `String` instance.
 > Raises an `ArgumentError` if *string* is not a valid bottom-encoded string or the
 > string is not valid a valid UTF8 string.
@@ -64,13 +64,13 @@ puts Bottom.decode("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈
 > Example:
 > 
 > Valid:
-> ```
+> ```crystal
 > puts Bottom.verify_bottom("💖✨✨,,👉👈💖💖,👉👈💖💖🥺,,,👉👈💖💖🥺,,,👉👈💖💖✨,👉👈")
 > # Output: nil
 > ```
 > 
 > Invalid:
-> ```
+> ```crystal
 > puts Bottom.verify_bottom("Hello")
 > # Output: ArgumentError
 > ```
